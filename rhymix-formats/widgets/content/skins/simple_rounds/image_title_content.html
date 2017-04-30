@@ -1,0 +1,37 @@
+<ul class="simple_content_list simple_content_webzine">
+{@$_idx=0}
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<li style="display:none"|cond="$_idx >= $widget_info->list_count">
+		<a href="{$item->getLink()}" class="cont_a" target="_blank"|cond="$widget_info->new_window">
+			<p class="simple_gallery_item simple_gallery_image">
+					<!--@if($item->getThumbnail())-->
+						<img src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" width="{$widget_info->thumbnail_width}" height="{$widget_info->thumbnail_height}" />
+					<!--@else-->
+						<span class="fake_img">{$lang->none_image}</span>
+					<!--@end-->
+			</p>
+			<div class="content_basic <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->content_reext<!--@end-->">
+				<div class="content_title">
+					{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}
+				</div>
+				<div class="simple_content_longtext" cond="$no_content !== TRUE && in_array('content', $widget_info->option_view_arr)">
+					{$item->getContent()}
+				</div>
+				<div class="content_info">
+					<span class="content_category" cond="$widget_info->show_category=='Y' && $item->get('category_srl')">{$item->getCategory()}</span>
+					<span class="content_nickname">
+						{$item->getNickName($widget_info->nickname_cut_size)}
+					</span>
+				</div>
+			</div>
+		</a>
+	</li>
+{@$_idx++}
+<!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<div class="simple_content_nav">
+	<button type="button" class="soo_cont_more" title="{$lang->more}" onclick="content_widget_plus(jQuery(this).parents('div.simple_content_nav').prev('ul.simple_content_list'),{$widget_info->list_count})">{$lang->more} &nbsp;<i class="simple_round sr_down"></i></button>
+</div>
+<!--@end-->
