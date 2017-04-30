@@ -14,14 +14,14 @@ function content_widget_plus(obj,list_per_page){
 	});
 	if(total_page === page+1)
 	{
-		if(obj.is('ul.simple_content_list'))
+		if(obj.is('ul.rx_sr_list'))
 		{
-			obj.next('div.simple_content_nav').css('display','none');
+			obj.next('div.rx_sr_nav').css('display','none');
 		}
 	}
 	if(total_page <= page) return;
-	if(obj.is('ul.simple_content_list')) {
-		jQuery('button.soo_cont_more>span.page_info',obj.next('div.simple_content_nav')).html(page+1 + '/' + total_page);
+	if(obj.is('ul.rx_sr_list')) {
+		jQuery('button.soo_cont_more>span.page_info',obj.next('div.rx_sr_nav')).html(page+1 + '/' + total_page);
 	}
 	list.each(function(i){
 		if(((page+1) * list_per_page) > i){
