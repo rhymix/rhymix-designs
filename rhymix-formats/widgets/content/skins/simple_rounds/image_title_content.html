@@ -3,11 +3,11 @@
 <!--@foreach($widget_info->content_items as $key => $item)-->
 	<li style="display:none"|cond="$_idx >= $widget_info->list_count">
 		<a href="{$item->getLink()}" class="rx_sr_a" target="_blank"|cond="$widget_info->new_window">
-			<p class="rx_sr_gal_item rx_sr_gal_image">
+			<p class="rx_sr_gal_item rx_sr_gal_image" style="width:{intval($widget_info->thumbnail_width)}px;">
 					<!--@if($item->getThumbnail())-->
-						<img src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" width="{$widget_info->thumbnail_width}" height="{$widget_info->thumbnail_height}" />
+						<img src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" />
 					<!--@else-->
-						<span class="rx_sr_no_img">{$lang->none_image}</span>
+						<span class="rx_sr_no_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height:{intval($widget_info->thumbnail_height)}px">{$lang->none_image}</span>
 					<!--@end-->
 			</p>
 			<div class="rx_sr_items <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->rx_sr_pad_R<!--@end-->">

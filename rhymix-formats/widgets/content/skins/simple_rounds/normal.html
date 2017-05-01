@@ -1,29 +1,26 @@
 <div class="inner">
 	<ul class="rx_sr_list">
 	{@$_idx=0}
-		<li loop="$widget_info->content_items => $key, $item" style="display:none"|cond="$_idx >= $widget_info->list_count" class="rx_sr_pad_R"|cond="$widget_info->show_comment_count=='Y' && $item->getCommentCount()">
+		<li loop="$widget_info->content_items => $key, $item" style="display:none"|cond="$_idx >= $widget_info->list_count" class="rx_sr_pad_R">
 			<a href="{$item->getLink()}" class="rx_sr_a" target="_blank"|cond="$widget_info->new_window">
-				<span cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()" class="rx_sr_img">
-					<img src="{$item->getThumbnail()}" width="{$widget_info->thumbnail_width}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" height="{$widget_info->thumbnail_height}" alt="{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}" />
-				</span>
-				<span class="rx_sr_items <!--@if(array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail())-->rx_sr_items_img<!--@end-->">
-					<span class="content_title">
-						<span class="rx_sr_tag" cond="$widget_info->tab_type  == 'tab_left' && $tab->tab_type == 'all'">{$item->getBrowserTitle()}</span>
-						<span class="rx_sr_tag" cond="$widget_info->show_category=='Y' && $item->get('category_srl') && trim($item->getCategory()) && !$tab->tab_type">{$item->getCategory()}</span> {str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}
-					</span>
-					<span class="content_nickname">
-						{$item->getNickName($widget_info->nickname_cut_size)}
-					</span>
-				</span>
-				<span class="rx_sr_right_layer <!--@if(array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail())-->rx_sr_items_img<!--@end-->" cond="$widget_info->show_comment_count=='Y' && $item->getCommentCount()">
-					<!--@if($item->getCommentCount()<999)-->{$item->getCommentCount()}<!--@else-->999+<!--@end-->
-				</span>
+				<div cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()" class="rx_sr_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height: {intval($widget_info->thumbnail_height)}px;">
+					<img src="{$item->getThumbnail()}" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" alt="{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}" />
+				</div>
+				<div class="rx_sr_items<!--@if(array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail())--> rx_sr_items_img"<!--@end-->">
+					<div class="rx_sr_items content_title<!--@if(array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail())--> rx_sr_items_img<!--@end-->">
+						<!--@if(!array_search('thumbnail', $widget_info->option_view_arr) || !$item->getThumbnail())--><span class="rx_sr_tag" cond="$item->getThumbnail()) && $widget_info->show_category=='Y' && $item->get('category_srl') && trim($item->getCategory()) && !$tab->tab_type">{$item->getCategory()}</span> <!--@end-->{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}
+					</div>
+					<div class="rx_sr_items_img rx_sr_tag" cond="(array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()) && $widget_info->show_category=='Y' && $item->get('category_srl') && trim($item->getCategory()) && !$tab->tab_type">{$item->getCategory()}</div>
+				</div>
+				<div class="rx_sr_right_layer content_nickname">
+					{$item->getNickName($widget_info->nickname_cut_size)}
+				</div>
 			</a>{@$_idx++}
 		</li>
 	</ul>
 	<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
 	<div class="rx_sr_nav">
-		<button type="button" class="soo_cont_more" title="{$lang->more}" onclick="content_widget_plus(jQuery(this).parents('div.rx_sr_nav').prev('ul.rx_sr_list'),{$widget_info->list_count})"><span class="page_info">1/{intval(($_idx - 1) / $widget_info->list_count) + 1}</span> {$lang->more}</button>
+		<button type="button" class="soo_cont_more" title="{$lang->more}" onclick="content_widget_plus(jQuery(this).parents('div.rx_sr_nav').prev('ul.rx_sr_list'),{$widget_info->list_count})">{$lang->more} &nbsp;<i class="rx_sr sr_down"></i></button>
 	</div>
 	<!--@end-->
 </div>

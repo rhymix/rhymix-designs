@@ -1,14 +1,14 @@
 <div class="inner">
-	<div class="rx_sr_gal">
+	<div class="rx_sr_gal" style="height: {intval($widget_info->thumbnail_height) + 67}px;">
 		<ul class="rx_sr_gal">
 			{@$_idx=0}
-			<li class="rx_sr_gal_item" loop="$widget_info->content_items => $key, $item">
-				<a href="{$item->getLink()}" class="rx_sr_a">
+			<li class="rx_sr_gal_item" loop="$widget_info->content_items => $key, $item" style="width: {intval($widget_info->thumbnail_width)}px;">
+				<a href="{$item->getLink()}" class="rx_sr_a" style="width: {intval($widget_info->thumbnail_width)}px;">
 					<span class="rx_sr_tag" cond="$widget_info->show_category=='Y' && $item->get('category_srl')">{$item->getCategory()}</span>
-					<img class="up_m fade" cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()" src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" alt="{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}" width="{$widget_info->thumbnail_width}" height="{$widget_info->thumbnail_height}" />
-					<div class="rx_sr_no_img" cond="!array_search('thumbnail', $widget_info->option_view_arr) || !$item->getThumbnail()">{$lang->none_image}</div>
+					<img class="up_m fade" cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()" src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" alt="{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" />
+					<div class="rx_sr_no_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height:{intval($widget_info->thumbnail_height)}px" cond="!array_search('thumbnail', $widget_info->option_view_arr) || !$item->getThumbnail()">{$lang->none_image}</div>
 					<div class="up_tw"|cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()">
-						<span class="gallery_text">
+						<span class="gallery_text" style="width: {intval($widget_info->thumbnail_width)}px">
 							<span class="content_title">
 								{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}
 							</span>
