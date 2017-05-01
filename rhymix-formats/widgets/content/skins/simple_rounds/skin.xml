@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <skin version="0.2">
-	<title xml:lang="ko">마더캣X미솔</title>
-	<title xml:lang="en">mothercat X misol</title>
+	<title xml:lang="ko">지구는 둥그니까</title>
+	<title xml:lang="en">Earth is round</title>
 	<description xml:lang="ko">둥근 모서리와 테마색상을 활용한 컨텐츠 스킨입니다.</description>
 	<description xml:lang="en">Rounds and theme-color.</description>
 	<version>1.0</version>
-	<date>2017-02-26</date>
+	<date>2017-05-01</date>
 	<link>https://github.com/rhymix/rhymix/</link>
 	<license link="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPLv2</license>
 
-	<author>
+	<author email_address="mely4506@naver.com" link="https://github.com/mothercat">
 		<name xml:lang="ko">mothercat</name>
 		<name xml:lang="en">mothercat</name>
 	</author>
