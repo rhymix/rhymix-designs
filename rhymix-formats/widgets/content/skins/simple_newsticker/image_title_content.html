@@ -1,0 +1,37 @@
+<ul class="rx_sr_list rx_sr_webzine">
+{@$_idx=0}
+<!--@foreach($widget_info->content_items as $key => $item)-->
+	<li style="display:none"|cond="$_idx >= $widget_info->list_count">
+		<a href="{$item->getLink()}" class="rx_sr_a" target="_blank"|cond="$widget_info->new_window">
+			<p class="rx_sr_gal_item rx_sr_gal_image" style="width:{intval($widget_info->thumbnail_width)}px;">
+					<!--@if($item->getThumbnail())-->
+						<img src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" />
+					<!--@else-->
+						<span class="rx_sr_no_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height:{intval($widget_info->thumbnail_height)}px">{$lang->none_image}</span>
+					<!--@end-->
+			</p>
+			<div class="rx_sr_items <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->rx_sr_pad_R<!--@end-->">
+				<div class="content_title">
+					{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}
+				</div>
+				<div class="rx_sr_longtext" cond="$no_content !== TRUE && in_array('content', $widget_info->option_view_arr)">
+					{$item->getContent()}
+				</div>
+				<div class="content_info">
+					<span class="rx_sr_tag" cond="$widget_info->show_category=='Y' && $item->get('category_srl')">{$item->getCategory()}</span>
+					<span class="content_nickname">
+						{$item->getNickName($widget_info->nickname_cut_size)}
+					</span>
+				</div>
+			</div>
+		</a>
+	</li>
+{@$_idx++}
+<!--@end-->
+</ul>
+
+<!--@if($widget_info->page_count > 1 && $widget_info->list_count<$_idx)-->
+<div class="rx_sr_nav">
+	<button type="button" class="soo_cont_more" title="{$lang->more}" onclick="content_widget_plus(jQuery(this).parents('div.rx_sr_nav').prev('ul.rx_sr_list'),{$widget_info->list_count})">{$lang->more} &nbsp;<i class="rx_sr sr_down"></i></button>
+</div>
+<!--@end-->
