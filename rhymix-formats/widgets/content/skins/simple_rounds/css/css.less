@@ -146,12 +146,24 @@ section.rx_sr
 		.text-contrast(#fff; darken(@color,5%); lighten(@color,5%));
 		margin: 0 7px 0 3px;
 	}
-	.rx_sr_gal_item .rx_sr_tag {
-		position: absolute;
-		top: 0;
-		right: 0;
-		background: #fff;
-		margin: 0;
+	.rx_sr_gal_item{
+		.rx_sr_a{
+			&:hover .rx_sr_tag, &:focus .rx_sr_tag{
+				background: linear-gradient(to top , rgba(0,0,0,0), rgba(0,0,0,0.7));
+			}
+			.rx_sr_tag {
+				position: absolute;
+				top: 0;
+				right: 0;
+				.text-contrast(#000; darken(@color,5%); lighten(@color,5%));
+				background: #000;
+				background: linear-gradient(to top , rgba(0,0,0,0), rgba(0,0,0,0.3));
+				text-align:right;
+				margin: 0;
+				padding: 5px;
+				box-sizing: border-box;
+			}
+		}
 	}
 	.content_nickname, .rx_sr_right_layer{
 		color: #c5c5c5;
@@ -226,7 +238,13 @@ section.rx_sr
 			& > li{
 				position: relative;
 				display: inline-block;
-				padding: 7px;
+				padding: 7px 3px;
+				&:first-child{
+					padding-left: 11px;
+				}
+				&:last-child{
+					padding-right: 11px;
+				}
 				.rx_sr_a{
 					position: relative;
 					padding:0;
@@ -287,9 +305,9 @@ section.rx_sr
 				text-decoration: none;
 				span {
 					margin: 5px;
-					padding: 5px 15px;
+					padding: 7px 18px;
 					border: 1px none;
-					border-radius: 15px;
+					border-radius: 18px;
 				}
 			}
 			a:hover, &.active a {
@@ -366,7 +384,7 @@ section.rx_sr
 			margin: 0 2px 0 0;
 		}
 	}
-	.content_title{
+	div.content_title{
 		white-space: normal;
 	}
 	.rx_sr_gal_image

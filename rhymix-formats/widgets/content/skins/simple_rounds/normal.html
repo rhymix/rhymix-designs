@@ -1,7 +1,7 @@
 <div class="inner">
 	<ul class="rx_sr_list">
 	{@$_idx=0}
-		<li loop="$widget_info->content_items => $key, $item" style="display:none"|cond="$_idx >= $widget_info->list_count" class="rx_sr_pad_R">
+		<li loop="$widget_info->content_items => $key, $item" style="display:none"|cond="$_idx >= $widget_info->list_count" class="rx_sr_pad_R"|cond="array_search('nickname', $widget_info->option_view_arr)">
 			<a href="{$item->getLink()}" class="rx_sr_a" target="_blank"|cond="$widget_info->new_window">
 				<div cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()" class="rx_sr_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height: {intval($widget_info->thumbnail_height)}px;">
 					<img src="{$item->getThumbnail()}" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" alt="{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}" />
@@ -12,7 +12,7 @@
 					</div>
 					<div class="rx_sr_items_img rx_sr_tag" cond="(array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()) && $widget_info->show_category=='Y' && $item->get('category_srl') && trim($item->getCategory()) && !$tab->tab_type">{$item->getCategory()}</div>
 				</div>
-				<div class="rx_sr_right_layer content_nickname">
+				<div class="rx_sr_right_layer content_nickname" cond="array_search('nickname', $widget_info->option_view_arr)">
 					{$item->getNickName($widget_info->nickname_cut_size)}
 				</div>
 			</a>{@$_idx++}
