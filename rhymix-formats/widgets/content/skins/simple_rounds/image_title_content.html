@@ -5,9 +5,9 @@
 		<a href="{$item->getLink()}" class="rx_sr_a" target="_blank"|cond="$widget_info->new_window">
 			<p class="rx_sr_gal_item rx_sr_gal_image" style="width:{intval($widget_info->thumbnail_width)}px;">
 					<!--@if($item->getThumbnail())-->
-						<img src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" />
+						<img class="rx_sr_gal_img" src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" />
 					<!--@else-->
-						<span class="rx_sr_no_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height:{intval($widget_info->thumbnail_height)}px">{$lang->none_image}</span>
+						<span class="rx_sr_gal_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height:{intval($widget_info->thumbnail_height)}px">{$lang->none_image}</span>
 					<!--@end-->
 			</p>
 			<div class="rx_sr_items <!--@if($widget_info->show_comment_count=='Y' && $item->getCommentCount())-->rx_sr_pad_R<!--@end-->">
@@ -19,7 +19,7 @@
 				</div>
 				<div class="content_info">
 					<span class="rx_sr_tag" cond="$widget_info->show_category=='Y' && $item->get('category_srl')">{$item->getCategory()}</span>
-					<span class="content_nickname">
+					<span class="content_nickname" cond="array_search('nickname', $widget_info->option_view_arr)">
 						{$item->getNickName($widget_info->nickname_cut_size)}
 					</span>
 				</div>

@@ -1,18 +1,18 @@
 <div class="inner">
-	<div class="rx_sr_gal" style="height: {intval($widget_info->thumbnail_height) + 70}px;">
+	<div class="rx_sr_gal" style="height: {intval($widget_info->thumbnail_height) + 43}px;"|cond="!array_search('nickname', $widget_info->option_view_arr)" style="height: {intval($widget_info->thumbnail_height) + 65}px;"|cond="array_search('nickname', $widget_info->option_view_arr)">
 		<ul class="rx_sr_gal">
 			{@$_idx=0}
 			<li class="rx_sr_gal_item" loop="$widget_info->content_items => $key, $item" style="width: {intval($widget_info->thumbnail_width)}px;">
 				<a href="{$item->getLink()}" class="rx_sr_a" style="width: {intval($widget_info->thumbnail_width)}px;">
 					<span class="rx_sr_tag" cond="$widget_info->show_category=='Y' && $item->get('category_srl')" style="width:{intval($widget_info->thumbnail_width)}px;min-height:{intval($widget_info->thumbnail_height)/2}px;">{$item->getCategory()}</span>
-					<img class="up_m fade" cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()" src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" alt="{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" />
-					<span class="rx_sr_no_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height:{intval($widget_info->thumbnail_height)}px" cond="!array_search('thumbnail', $widget_info->option_view_arr) || !$item->getThumbnail()">{$lang->none_image}</span>
-					<div class="up_tw"|cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()">
+					<img class="rx_sr_gal_img" cond="array_search('thumbnail', $widget_info->option_view_arr) && $item->getThumbnail()" src="{$item->getThumbnail()}" srcset="{$item->getThumbnail(2)} 2x"|cond="$item->getThumbnail(2)" alt="{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}" width="{intval($widget_info->thumbnail_width)}" height="{intval($widget_info->thumbnail_height)}" />
+					<span class="rx_sr_gal_img" style="width:{intval($widget_info->thumbnail_width)}px; height:{intval($widget_info->thumbnail_height)}px; line-height:{intval($widget_info->thumbnail_height)}px" cond="!array_search('thumbnail', $widget_info->option_view_arr) || !$item->getThumbnail()">{$lang->none_image}</span>
+					<div>
 						<span class="gallery_text" style="width: {intval($widget_info->thumbnail_width)}px">
 							<span class="content_title">
 								{str_replace(array('&amp;amp;','&amp;lt;','&amp;gt;','&amp;quot;','&amp;apos;'),array('&amp;','&lt;','&gt;','&quot;','&apos;'),$item->getTitle($widget_info->subject_cut_size))}
 							</span>
-							<span class="content_nickname">
+							<span class="content_nickname" cond="array_search('nickname', $widget_info->option_view_arr)">
 								{$item->getNickName($widget_info->nickname_cut_size)}
 							</span>
 						</span>
