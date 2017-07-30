@@ -5,16 +5,15 @@
 		<p>{$XE_VALIDATOR_MESSAGE}</p>
 	</div>
 	<dl>
-		<block loop="$displayDatas => $item">
+		<div loop="$displayDatas => $item">
 			<dt>{$item->title}<sup cond="$item->required || $item->mustRequired">*</sup></dt><dd cond="$item->value">{$item->value}</dd><dd cond="!$item->value">&hellip;</dd>
-		</block>
-		<dt>{$lang->member_group}</dt><dd>{implode(', ', $memberInfo['group_list'])}</dd>
-		<dt>{$lang->signup_date}</dt>
-		<dd>{zdate($memberInfo[regdate],"Y-m-d")}</dd>
-		<block cond="$memberInfo[member_srl] == $logged_info->member_srl || $logged_info->is_admin == 'Y'">
+		</div>
+		<div><dt>{$lang->member_group}</dt><dd>{implode(', ', $memberInfo['group_list'])}</dd></div>
+		<div><dt>{$lang->signup_date}</dt><dd>{zdate($memberInfo[regdate],"Y-m-d")}</dd></div>
+		<div cond="$memberInfo[member_srl] == $logged_info->member_srl || $logged_info->is_admin == 'Y'">
 			<dt>{$lang->last_login}</dt>
 			<dd>{zdate($memberInfo[last_login],"Y-m-d")}</dd>
-		</block>
+		</div>
 	</dl>
 </section>
 <div class="sw-footer sw-anchor-buttons" cond="$memberInfo['member_srl'] == $logged_info->member_srl">
