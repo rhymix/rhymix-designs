@@ -197,6 +197,7 @@ script, style
 	.sw-body
 	{
 		box-sizing:border-box;
+		border-radius: 15px;
 		.background-lightgray();
 		margin: 0 0 20px;
 		&>*
@@ -264,7 +265,6 @@ script, style
 			&>input, &>select
 			{
 				border: 1px solid #d1d1d1;
-				background-color: #fff;
 				border-radius: 25px;
 				margin-top: 0;
 				padding: 8px 15px;
@@ -310,7 +310,7 @@ script, style
 		color: #000;
 		border-radius: 15px;
 		padding: 15px;
-		margin:0;
+		margin: 10px;
 		margin-top:0;
 		text-align: justify;
 		.font-gray();
@@ -331,109 +331,110 @@ script, style
 		padding: 0;
 		margin:0;
 	}
-
-
+	
+	/* The list of document style */
+	.rx_sw_list .cont_a {
+		color: #222;
+		display: block;
+		letter-spacing: -1px;
+		line-height: 18px;
+		margin: 0;
+		overflow: hidden;
+		padding: 0.667em 70px 0.733em 15px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		text-decoration: none;
+		&.no_delete {
+			padding-right: 15px;
+		}
+		&:hover, &:focus {
+			.text-contrast(#fff; darken(@color,5%); lighten(@color,5%));
+		}
+	}
+	.content_basic{
+		position:relative;
+		display:inline-block;
+		max-width:100%;
+		vertical-align: middle;
+		overflow:hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.content_subinfo
+	{
+		color: #9e9e9e;
+		font-size: 12px;
+		margin: 0 3px 0 7px;
+		overflow:hidden;
+	}
+	ul.rx_sw_list {
+		list-style: outside none none;
+		padding: 0;
+		margin: 0;
+		border-bottom: 1px solid #e0e0e0;
+		li {
+			position:relative;
+			border-top: 1px solid #e0e0e0;
+			overflow: hidden;
+			padding:0;
+		}
+		.content_delete{
+			position:absolute;
+			top:0;
+			right:2px;
+			button{
+				background: lighten(@color, 5%);
+				font-size: 14px;
+				border:0;
+				border-radius: 25px;
+				.text-contrast(lighten(@color, 5%));
+				padding: 10px 15px;
+				vertical-align: bottom;
+			}
+		}
+	}
+	.pagination ul
+	{
+		display:block;
+		list-style: outside none none;
+		text-align:center;
+		padding: 0;
+		margin: 0;
+		li{
+			display:inline-block;
+			&>a
+			{
+				display: inline-block;
+				border-radius: 25px;
+				background-color: #fff;
+				padding: 10px 15px;
+				text-decoration: none;
+				.font-m();
+			}
+			&.active>a
+			{
+				background-color: #d1d1d1;
+				font-weight:bold;
+				color:#000;
+			}
+		}
+	}
+	.sw-footer
+	{
+		&>a
+		{
+			display: block;
+			border-radius: 25px;
+			border: 1px solid #d1d1d1;
+			background-color: #fff;
+			padding: 10px 15px;
+			text-decoration: none;
+			text-align: center;
+			.font-m();
+		}
+	}
 }
 
-
-
-
-/* The list of document style */
-.rx_prn_member .rx_sw_list .cont_a {
-	color: #222;
-	display: block;
-	letter-spacing: -1px;
-	line-height: 18px;
-	margin: 0;
-	overflow: hidden;
-	padding: 0.667em 70px 0.733em 15px;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	text-decoration: none;
-}
-.rx_prn_member .rx_sw_list .cont_a.no_delete {
-	padding-right: 15px;
-}
-.rx_prn_member .rx_sw_list .cont_a:hover, .rx_prn_member .rx_sw_list .cont_a:focus {
-	.text-contrast(#fff; darken(@color,5%); lighten(@color,5%));
-}
-.rx_prn_member .content_basic{
-	position:relative;
-	display:inline-block;
-	max-width:100%;
-	vertical-align: middle;
-	overflow:hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-.rx_prn_member .content_subinfo
-{
-	color: #9e9e9e;
-	font-size: 12px;
-	margin: 0 3px 0 7px;
-	overflow:hidden;
-}
-.rx_prn_member ul.rx_sw_list {
-	list-style: outside none none;
-	padding: 0;
-	margin: 0;
-	border-bottom: 1px solid #e0e0e0;
-}
-
-.rx_prn_member .rx_sw_list li {
-	position:relative;
-	border-top: 1px solid #e0e0e0;
-	overflow: hidden;
-	padding:0;
-}
-.rx_prn_member .rx_sw_list .content_delete{
-	position:absolute;
-	top:0;
-	right:2px;
-}
-.rx_prn_member .rx_sw_list .content_delete button{
-	background: lighten(@color, 5%);
-	font-size: 14px;
-	border:0;
-	.text-contrast(lighten(@color, 5%));
-	padding: 10px;
-	vertical-align: bottom;
-}
-.rx_prn_member .pagination ul, .rx_prn_member .pagination ul li
-{
-	display:inline-block;
-	list-style: outside none none;
-	padding: 0;
-	margin: 0;
-	border:0;
-}
-.rx_prn_member .pagination ul
-{
-	display:block;
-	text-align:center;
-}
-.rx_prn_member .pagination ul li>a, .rx_prn_member .sw-footer>a
-{
-	display: inline-block;
-	background: #fff;
-	font-size: 14px;
-	color: #000;
-	font-weight: bold;
-	padding: 10px;
-	min-width:25px;
-	text-decoration: none;
-	text-align: center;
-}
-.rx_prn_member .sw-footer>a
-{
-	display: block;
-}
-.rx_prn_member .pagination ul li.active>a
-{
-	.bg-contrast(#000; lighten(@color, 5%); darken(@color, 5%), 2.0);
-	font-weight:bold;
-	color:#000;
-}
 
 /* button hover */
 .rx_prn_member form div.control-group>input[type="submit"]:hover, .rx_prn_member form div.control-group>input.btn.dateRemover:hover, .rx_prn_member .sw-footer>a:hover, .rx_prn_member .sw-anchor-buttons a:hover, .rx_prn_member .pagination ul li>a:hover, .rx_prn_member .rx_sw_list .content_delete button:hover,
