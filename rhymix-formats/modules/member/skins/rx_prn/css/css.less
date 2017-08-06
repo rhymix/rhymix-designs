@@ -262,7 +262,7 @@ script, style
 			{
 				margin-top: 0;
 			}
-			&>input, &>select
+			&>input, &>select, button
 			{
 				border: 1px solid #d1d1d1;
 				border-radius: 25px;
@@ -280,9 +280,8 @@ script, style
 			}
 		}
 	}
-	form div.control-group>input[type="submit"], form div.control-group>input.btn.dateRemover, .sw-footer>a, .sw-anchor-buttons a
+	form input[type="submit"], form input.btn.dateRemover, form button
 	{
-		display:block;
 		padding: 10px;
 		vertical-align: bottom;
 		.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 3.0);
@@ -290,6 +289,10 @@ script, style
 		text-shadow: none;
 		border:0;
 		color: #000;
+		&:hover, &:focus
+		{
+			.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 4.0);
+		}
 	}
 	form div.control-group>input[type="submit"], .sw-footer{
 		margin: 20px 0 0;
@@ -298,9 +301,9 @@ script, style
 
 	.sw-footer.sw-anchor-buttons {
 		text-align:right;
-	}
-	.sw-footer.sw-anchor-buttons>a {
-		display:inline-block;
+		&>a {
+			display:inline-block;
+		}
 	}
 
 	/* message; error, info, update */
@@ -390,6 +393,10 @@ script, style
 				.text-contrast(lighten(@color, 5%));
 				padding: 10px 15px;
 				vertical-align: bottom;
+				&:hover, &:focus
+				{
+					.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 4.0);
+				}
 			}
 		}
 	}
@@ -410,6 +417,10 @@ script, style
 				padding: 10px 15px;
 				text-decoration: none;
 				.font-m();
+				&:hover, &:focus
+				{
+					.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 4.0);
+				}
 			}
 			&.active>a
 			{
@@ -431,17 +442,11 @@ script, style
 			text-decoration: none;
 			text-align: center;
 			.font-m();
+			&:hover, &:focus
+			{
+				.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 4.0);
+			}
 		}
 	}
 }
 
-
-/* button hover */
-.rx_prn_member form div.control-group>input[type="submit"]:hover, .rx_prn_member form div.control-group>input.btn.dateRemover:hover, .rx_prn_member .sw-footer>a:hover, .rx_prn_member .sw-anchor-buttons a:hover, .rx_prn_member .pagination ul li>a:hover, .rx_prn_member .rx_sw_list .content_delete button:hover,
-.rx_prn_member form div.control-group>input[type="submit"]:focus, .rx_prn_member form div.control-group>input.btn.dateRemover:focus, .rx_prn_member .sw-footer>a:focus, .rx_prn_member .sw-anchor-buttons a:focus, .rx_prn_member .pagination ul li>a:focus, .rx_prn_member .rx_sw_list .content_delete button:focus
-
-{
-
-	.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 4.0);
-	color: #000;
-}
