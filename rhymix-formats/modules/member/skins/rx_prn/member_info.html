@@ -21,12 +21,12 @@
 				<dd>{zdate($memberInfo[last_login],"Y-m-d")}</dd>
 			</div>
 		</dl>
+		<div class="prn-anchor-buttons" cond="$memberInfo['member_srl'] == $logged_info->member_srl">
+			<a href="{getUrl('act', 'dispMemberModifyEmailAddress')}" cond="$member_config->identifier == 'email_address'">{$lang->cmd_modify_member_email_address}</a>
+			<a href="{getUrl('act','dispMemberModifyInfo','member_srl','')}">{$lang->cmd_modify_member_info}</a>
+			<a href="{getUrl('act','dispMemberModifyPassword','member_srl','')}">{$lang->cmd_modify_member_password}</a>
+			<a href="{getUrl('act','dispMemberLeave','member_srl','')}">{$lang->cmd_leave}</a>
+		</div>
 	</section>
-</div>
-<div class="prn-footer prn-anchor-buttons" cond="$memberInfo['member_srl'] == $logged_info->member_srl">
-	<a href="{getUrl('act', 'dispMemberModifyEmailAddress')}" cond="$member_config->identifier == 'email_address'">{$lang->cmd_modify_member_email_address}</a>
-	<a href="{getUrl('act','dispMemberModifyInfo','member_srl','')}">{$lang->cmd_modify_member_info}</a>
-	<a href="{getUrl('act','dispMemberModifyPassword','member_srl','')}">{$lang->cmd_modify_member_password}</a>
-	<a href="{getUrl('act','dispMemberLeave','member_srl','')}">{$lang->cmd_leave}</a>
 </div>
 <include target="./common_footer.html" />

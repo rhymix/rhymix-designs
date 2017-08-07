@@ -36,3 +36,34 @@ function dispMemberValueCheck(response, response_tags, field) {
 
 	dummy.html(response['message']).show();
 }
+
+$(document).ready(function(){
+	// label for setup
+	$('.control-label[for]').each(function(){
+		var $this = $(this);
+		if($this.attr('for') == ''){
+			$this.attr('for', $this.next().children(':visible:first').attr('id'));
+		}
+	});
+	// label for profile images
+	$('#profile_imagetag').each(function() {
+		$(this).html(function(i, oldhtml) {
+			html = '<div class="control-group"><label for="profile_image"><span id="prn_profile_imagetag">' + oldhtml + '</span></label></div>';
+			$(this).after(html);
+			$(this).attr('id', 'dummy');
+			return '';
+		});
+	})
+	// image input
+	$('#profile_image')
+		.css('display','none')
+		.change(function() {
+			if (this.files && this.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#prn_profile_imagetag img').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		});
+});

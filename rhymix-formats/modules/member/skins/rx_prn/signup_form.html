@@ -69,42 +69,38 @@
 	</form>
 </section>
 <script>
-(function($){
-	// label for setup
-	$('.control-label[for]').each(function(){
-		var $this = $(this);
-		if($this.attr('for') == ''){
-			$this.attr('for', $this.next().children(':visible:first').attr('id'));
-		}
+//<!--
+xe.lang.deleteProfileImage = '{$lang->msg_delete_extend_form}';
+xe.lang.deleteImageMark = '{$lang->msg_delete_extend_form}';
+xe.lang.deleteImageName = '{$lang->msg_delete_extend_form}';
+$(function(){
+	// check if the browser support type date.
+	if ( $(".inputDate").prop('type') != 'date' ) {
+		var option = {
+			changeMonth: true,
+			changeYear: true,
+			gotoCurrent: false,
+			yearRange:'-200:+10',
+			dateFormat:'yy-mm-dd',
+			defaultDate: new Date("{date('Y-m-d',time())}"),
+			minDate: new Date("{date('Y-m-d',strtotime('-200 years'))}"),
+
+			onSelect:function(){
+				$(this).prev('input[type="hidden"]').val(this.value.replace(/-/g,""))
+			}
+		};
+		$.extend($.datepicker.regional['{$lang_type}'],option);
+
+		//if the browser does not support type date input, start datepicker. If it does, brower's UI will show their datepicker.
+		$(".inputDate").datepicker(option);
+	} else {
+		$(".inputDate").prop('readonly', false);
+	}
+	$(".dateRemover").click(function() {
+		$(this).prevAll('input').val('');
+		return false;
 	});
-
-	$(function(){
-		// check if the browser support type date.
-		if ( $(".inputDate").prop('type') != 'date' ) {
-			var option = {
-				changeMonth: true,
-				changeYear: true,
-				gotoCurrent: false,
-				yearRange:'-200:+10',
-				dateFormat:'yy-mm-dd',
-				defaultDate: new Date("{date('Y-m-d',time())}"),
-				minDate: new Date("{date('Y-m-d',strtotime('-200 years'))}"),
-
-				onSelect:function(){
-					$(this).prev('input[type="hidden"]').val(this.value.replace(/-/g,""))
-				}
-			};
-			$.extend($.datepicker.regional['{$lang_type}'],option);
-
-			//if the browser does not support type date input, start datepicker. If it does, brower's UI will show their datepicker.
-			$(".inputDate").datepicker(option);
-		} else {
-			$(".inputDate").prop('readonly', false);
-		}
-		$(".dateRemover").click(function() {
-			$(this).prevAll('input').val('');
-			return false;});
-	});
-})(jQuery);
+});
+//-->
 </script>
 <include target="./common_footer.html" />
