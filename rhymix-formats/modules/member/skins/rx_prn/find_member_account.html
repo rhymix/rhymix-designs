@@ -1,5 +1,5 @@
 <include target="./common_header.html" />
-<section class="sw-body">
+<section class="prn-body">
 	<h1>{lang('member.cmd_find_member_account_with_email')}</h1>
 	<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/member/skin/rx_prn/find_member_account/1'" class="rx_member-notice {$XE_VALIDATOR_MESSAGE_TYPE}">
 		<p>{$XE_VALIDATOR_MESSAGE}</p>
@@ -21,7 +21,7 @@
 		</div>
 	</form>
 </section>
-<section class="sw-body" cond="count(lang('member.find_account_question_items'))>1 && $enable_find_account_question == 'Y'">
+<section class="prn-body" cond="count(lang('member.find_account_question_items'))>1 && $enable_find_account_question == 'Y'">
 	<h1>{$lang->cmd_find_member_account_with_email_question}</h1>
 	<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/member/skin/rx_prn/find_member_account/2'" class="rx_member-notice {$XE_VALIDATOR_MESSAGE_TYPE}">
 		<p>{$XE_VALIDATOR_MESSAGE}</p>
@@ -62,7 +62,7 @@
 		</div>
 	</form>
 </section>
-<section class="sw-body">
+<section class="prn-body">
 	<h1>{lang('member.cmd_resend_auth_mail')}</h1>
 	<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/member/skin/rx_prn/find_member_account/3'" class="rx_member-notice {$XE_VALIDATOR_MESSAGE_TYPE}">
 		<p>{$XE_VALIDATOR_MESSAGE}</p>
