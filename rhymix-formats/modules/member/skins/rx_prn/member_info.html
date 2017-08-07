@@ -6,7 +6,7 @@
 			<p>{$XE_VALIDATOR_MESSAGE}</p>
 		</div>
 		<block loop="$displayDatas => $item">
-			<div class="prn-profile_image" cond="$item->name === 'profile_image'">
+			<div class="prn-profile_image" cond="$item->name === 'profile_image' && $item->value">
 				{$item->value}
 			</div>
 		</block>
