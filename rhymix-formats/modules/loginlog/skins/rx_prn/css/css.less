@@ -51,7 +51,6 @@
 /* As LESS library in Rhymix substitude variables as an strings, convert colors as the color objects of LESS. */
 @color: rgb(@red, @green, @blue);
 
-
 /* As this file handle some wild-selectors to control display settings, hide inline script and style codes. */
 script, style
 {
@@ -60,7 +59,7 @@ script, style
 
 /* Member skin container, default settings */
 
-.rx_prn_member
+.rx_prn_loginlog
 {
 	/* font-size */
 	.font-xl()
@@ -203,9 +202,15 @@ script, style
 		padding: 1px 0;
 		&>*
 		{
-			padding: 20px;
+			padding: 5px 20px;
 			margin:0;
 			border: 0;
+			&:first-child {
+				padding-top: 20px;
+			}
+			&:last-child {
+				padding-bottom: 20px;
+			}
 		}
 		h1
 		{
@@ -215,145 +220,10 @@ script, style
 			.font-l();
 			.font-bold();
 		}
-		dl {
-			position: relative;
-			padding:0;
-			margin:20px;
-			&>div
-			{
-				clear:both;
-			}
-			dt {
-				width: 33%;
-				max-width: 300px;
-				.font-bold();
-				float:left;
-			}
-			dt, dd {
-				list-style: outside none none;
-				box-sizing: border-box;
-				display: inline-block;
-				margin: 0;
-				padding: 7px 0;
-				border: none;
-				line-height: 1.6;
-				.font-m();
-			}
-		}
-		.prn-anchor-buttons
-		{
-			&>a, &>label, &>button, &>select, &>input[type="submit"]
-			{
-				display: block;
-				width: 100%;
-				-webkit-appearance: none;
-				box-sizing: border-box;
-				border-top:    none;
-				border-right:  none;
-				border-bottom: 1px solid #d1d1d1;
-				border-left:   none;
-				border-radius: 0px;
-				background-color: #fff;
-				padding: 10px 15px;
-				text-decoration: none;
-				text-align: center;
-				.font-m();
-				.font-point();
-				&:hover, &:focus
-				{
-					.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 4.0);
-				}
-				&:first-child
-				{
-					border-top: 1px solid #d1d1d1;
-				}
-			}
-	}
-	form
-	{
-		overflow: hidden;
-		width:100%;
-		white-space: normal;
-		box-sizing: border-box;
-		div.control-group
-		{
-			&>*
-			{
-				display:block;
-				position:relative;
-				box-sizing: border-box;
-				width:100%;
-				min-height:25px;
-				margin:0px;
-				margin-top: 10px;
-			}
-			&>*:first-child
-			{
-				margin-top: 0;
-			}
-			&>input, &>select, button, #prn_profile_imagetag label.prn_button
-			{
-				border: 1px solid #d1d1d1;
-				border-radius: 25px;
-				margin-top: 0;
-				padding: 8px 15px;
-				-webkit-appearance: none;
-				line-height: 2;
-				.font-gray();
-				.font-m();
-			}
-			&>label, &>div.control-label
-			{
-				font-weight: bold;
-				border:0;
-			}
-		}
-	}
-	form input[type="submit"], form input.btn.dateRemover, form button, label.prn_button
-	{
-		padding: 10px;
-		vertical-align: bottom;
-		.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 3.0);
-		font-weight: bold;
-		text-shadow: none;
-		border:0;
-		color: #000;
-		&:hover, &:focus
-		{
-			.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 4.0);
-		}
-	}
-	form div.control-group>input[type="submit"], .prn-footer{
-		margin: 20px 0 0;
-	}
-	div.prn-profile_image
-	{
-		text-align: center;
-		img
-		{
-			border-radius: 50%;
-		}
-		#prn_profile_imagetag {
-			position:relative;
-			button, label.prn_button
-			{
-				padding : 12px 15px;
-				line-height:1;
-				position:absolute;
-				bottom: 0;
-				right:0;
-			}
-		}
-	}
-	.prn-footer.prn-anchor-buttons {
-		text-align:right;
-		&>a {
-			display:inline-block;
-		}
 	}
 
 	/* message; error, info, update */
-	.rx_member-notice, .rx_member-notice.info
+	.rx_prn-notice, .rx_prn-notice.info
 	{
 		.bg-contrast(#000; lighten(@color, 5%); darken(@color, 5%); 5.0);
 		color: #000;
@@ -365,89 +235,57 @@ script, style
 		.font-gray();
 		.font-m();
 	}
-	.rx_member-notice.error
+	.rx_prn-notice.error
 	{
 		background: #fff3e0;
 		.text-contrast(#fff3e0);
 	}
-	.rx_member-notice.update
+	.rx_prn-notice.update
 	{
 		background: #e8f5e9;
 		.text-contrast(#e8f5e9);
 	}
-	.rx_member-notice>*
+	.rx_prn-notice>*
 	{
 		padding: 0;
 		margin:0;
 	}
 	
 	/* The list of document style */
-	.rx_sw_list .cont_a {
-		color: #222;
-		display: block;
-		letter-spacing: -1px;
-		line-height: 18px;
-		margin: 0;
-		overflow: hidden;
-		padding: 0.667em 70px 0.733em 15px;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		text-decoration: none;
-		&.no_delete {
-			padding-right: 15px;
-		}
-		&:hover, &:focus {
-			.text-contrast(#fff; darken(@color,5%); lighten(@color,5%));
-		}
-	}
-	.content_basic{
-		position:relative;
-		display:inline-block;
-		max-width:100%;
-		vertical-align: middle;
-		overflow:hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-	}
-	.content_subinfo
-	{
-		color: #9e9e9e;
-		font-size: 12px;
-		margin: 0 3px 0 7px;
-		overflow:hidden;
-	}
 	ul.rx_sw_list {
 		list-style: outside none none;
+		margin: 20px 0px;
 		padding: 0;
-		margin: 0;
 		border-bottom: 1px solid #e0e0e0;
 		li {
 			position:relative;
 			border-top: 1px solid #e0e0e0;
 			overflow: hidden;
-			padding:0;
-		}
-		.content_delete{
-			position:absolute;
-			top:0;
-			right:2px;
-			button, a{
-				background: lighten(@color, 5%);
-				font-size: 14px;
-				border:0;
-				border-radius: 25px;
-				.text-contrast(lighten(@color, 5%));
-				padding: 10px 15px;
-				vertical-align: bottom;
-				&:hover, &:focus
-				{
-					.bg-contrast(#000; lighten(@color,5%); darken(@color,5%); 4.0);
-				}
+			padding: 0.667em 15px 0.733em;
+			color: #222;
+			&:hover, &:focus {
+				.text-contrast(#fff; darken(@color,5%); lighten(@color,5%));
 			}
-			input[type="checkbox"]
+			.content_basic{
+				position:relative;
+				display:inline-block;
+				max-width:100%;
+				vertical-align: middle;
+			}
+			.content_subinfo
 			{
-				width: 30px;
-				height: 30px;
+				color: #9e9e9e;
+				font-size: 12px;
+				margin: 0 3px 0 7px;
+				overflow:hidden;
+			}
+			.text-success
+			{
+				color: #00c853;
+			}
+			.text-danger
+			{
+				color: #ff6d00;
 			}
 		}
 	}

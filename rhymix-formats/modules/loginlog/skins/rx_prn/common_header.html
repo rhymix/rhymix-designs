@@ -1,4 +1,9 @@
-<load target="js/member.js" />
+<!--// responsible layout -->
+<!--@if($communication_popup === TRUE)-->
+	{@Context::addMetaTag("viewport", "width=device-width, user-scalable=yes")}
+<!--@endif-->
+<load target="js/js.js" />
+
 <!--// Check layout. If it is Simple World, select layout primary colors as a primary color of this skin -->
 <block cond="$layout_info->extra_var->primary_color->type === 'select' || $layout_info->extra_var->customized_primary_color->type === 'colorpicker'">
 	{@
@@ -66,7 +71,7 @@
 </block>
 {@Context::set('prn_less_value', array('red' => hexdec(substr($skin_color, 1, 2)), 'green' => hexdec(substr($skin_color, 3, 2)), 'blue' => hexdec(substr($skin_color, 5, 2)) ))}
 <load target="css/css.less" vars="$prn_less_value" />
-<section class="rx_prn_member">
+<section class="rx_prn_loginlog">
 	<div class="rx_prn_tab" cond="$is_logged && $logged_info->menu_list && (!$member_srl || $member_srl == $logged_info->member_srl)">
 		<ul class="rx_prn_tab">
 			<li loop="$logged_info->menu_list=>$key,$val" class="active"|cond="$key==$act">

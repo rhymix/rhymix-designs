@@ -1,0 +1,41 @@
+<include target="./common_header.html" />
+<div class="prn-narrow">
+	<section class="prn-body">
+		<h1>{$lang->cmd_view_loginlog}</h1>
+		<div class="rx_prn-notice">{lang('common.total')}: {number_format($total_count)}</div>
+		<div>
+			<ul class="rx_sw_list">
+				<li loop="$histories => $key, $item">
+						<span class="content_basic">
+							<span class="content_title">
+								<strong class="text-success" cond="$item->is_succeed == 'Y'">[{lang('is_succeed')}]</strong>
+								<strong class="text-danger" cond="$item->is_succeed == 'N'">[{lang('is_failed')}]</strong>
+								{$item->ipaddress}
+								<block cond="$item->platform">
+									 / {$item->platform}
+								</block>
+								<block cond="$item->browser">
+									 / {$item->browser}
+								</block>
+							</span>
+							<span class="content_subinfo">
+								{zdate($item->regdate)}
+							</span>
+						</span>
+				</li>
+			</ul>
+		</div>
+	</section>
+</div>
+<div class="pagination pagination-centered">
+	<ul>
+		{@$rx_prn = FALSE}
+		<!--@while($page_no = $page_navigation->getNextPage())-->
+		<li cond="$rx_prn === FALSE && ($page_no - 1) > 0"><a href="{getUrl('page', ($page_no - 1),'module_srl','')}" class="direction">&lsaquo;</a></li>
+		{@$rx_prn = $page_no}
+		<li class="active"|cond="$page == $page_no"><a href="{getUrl('page',$page_no,'module_srl','')}">{$page_no}</a></li>
+		<!--@end-->
+		<li cond="$page_navigation->last_page > $rx_prn && $rx_prn > 0"><a href="{getUrl('page', ($rx_prn + 1),'module_srl','')}" class="direction">&rsaquo;</a></li>
+	</ul>
+</div>
+<include target="./common_footer.html" />
