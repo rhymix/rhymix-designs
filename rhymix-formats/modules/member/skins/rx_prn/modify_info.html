@@ -55,6 +55,7 @@
 	xe.lang.cmd_upload = '{$lang->cmd_upload}';
 	var prn_profile_image = {}, prn_member_srl = '{$member_info->member_srl}';
 	prn_profile_image['exists'] = <!--@if($member_info->profile_image->src)-->true<!--@else-->false<!--@end-->, prn_profile_image['src'] = "<!--@if($member_info->profile_image->src)-->{escape($member_info->profile_image->src)}<!--@else-->./modules/member/m.skins/rx_prn/images/member.svg<!--@end-->", prn_profile_image['width'] = "{$member_config->profile_image_max_width}", prn_profile_image['height'] = "{$member_config->profile_image_max_height}", prn_profile_image['alt'] = "{lang('member.profile_image')}";
+
 	$(function(){
 		// check if the browser support type date.
 		if ( $(".inputDate").prop('type') != 'date' ) {
@@ -79,7 +80,7 @@
 			$(".inputDate").prop('readonly', false);
 		}
 		$(".dateRemover").click(function() {
-			$(this).prevUntil("label" ).val('');
+			$(this).prevUntil("label").val('');
 			return false;
 		});
 	});

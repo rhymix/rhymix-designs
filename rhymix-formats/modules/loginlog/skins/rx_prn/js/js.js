@@ -10,10 +10,13 @@ function isRxPrnTouchable() {
 
 $(document).ready(function() {
 	if(isRxPrnTouchable()) {
-		$(".rx_prn_loginlog div.rx_prn_tab ul.rx_prn_tab")
-			.css('white-space', 'nowrap')
-			.animate({
+		$(".rx_prn_loginlog div.rx_prn_tab ul.rx_prn_tab").css('white-space', 'nowrap');
+		try
+		{
+			$(".rx_prn_loginlog div.rx_prn_tab ul.rx_prn_tab").animate({
 				scrollLeft: $(".rx_prn_loginlog div.rx_prn_tab ul.rx_prn_tab li.active").offset().left
 			}, 300);
+		} catch (e) {
+		}
 	}
 });
